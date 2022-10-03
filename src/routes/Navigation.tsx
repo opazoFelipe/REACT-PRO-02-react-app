@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router-dom";
 
@@ -21,11 +22,17 @@ import { NavItemList } from "./components/NavItemList";
  * @to path de la ruta donde va a redireccionar
  * @replace permite evitar que se pueda volver atrás en el navegador
  *
+ * *<Suspense fallback={null}></Suspense>
+ * Es requerido si se usa la carga lazy
+ * Permite hacer tareas mientras se realiza la carga de los componentes lazy
+ * La primera vez que se cargan los chunks de los componentes se puede apreciar un flash en la ventana pero luego estos pasan a memoria y dicho efecto desaparece
+ * @fallback permite mostrar un componente o elemento mientras se realiza la carga del componente lazy. Si el valor es null entonces no muestra nada, pero por ejemplo se podría mostrar un mensaje de loading como el siguiente: <span>Loading...</span>
+ * 
  */
 
 export const Navigation = () => {
     return (
-        <>
+        <Suspense fallback={<span>Loading...</span>}>
             <BrowserRouter>
                 <div className="main-layout">
                     <nav>
@@ -64,6 +71,6 @@ export const Navigation = () => {
                     </Routes>
                 </div>
             </BrowserRouter>
-        </>
+        </Suspense>
     );
 };
