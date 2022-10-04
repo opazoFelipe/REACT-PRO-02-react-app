@@ -4,7 +4,6 @@ export const App = () => {
     return (
         <>
             <Navigation />
-            <h1>App.tsx</h1>
         </>
     );
 }
