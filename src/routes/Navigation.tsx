@@ -48,7 +48,7 @@ export const Navigation = () => {
                         <Route path="/" element={<ShoppingPage />} />
 
                         {/* Cualquier ruta que no exista se redirije */}
-                        <Route path="/*" element={<Navigate to="/home" replace />} />
+                        <Route path="/*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </div>
             </BrowserRouter>
